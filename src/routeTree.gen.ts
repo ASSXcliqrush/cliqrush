@@ -10,33 +10,119 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesWebsiteDevelopmentRouteImport } from './routes/services.website-development'
+import { Route as ServicesVideoCreationRouteImport } from './routes/services.video-creation'
+import { Route as ServicesSocialMediaMarketingRouteImport } from './routes/services.social-media-marketing'
+import { Route as ServicesSeoRouteImport } from './routes/services.seo'
+import { Route as ServicesPerformanceMarketingRouteImport } from './routes/services.performance-marketing'
+import { Route as ServicesContentMarketingRouteImport } from './routes/services.content-marketing'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesWebsiteDevelopmentRoute =
+  ServicesWebsiteDevelopmentRouteImport.update({
+    id: '/services/website-development',
+    path: '/services/website-development',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesVideoCreationRoute = ServicesVideoCreationRouteImport.update({
+  id: '/services/video-creation',
+  path: '/services/video-creation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSocialMediaMarketingRoute =
+  ServicesSocialMediaMarketingRouteImport.update({
+    id: '/services/social-media-marketing',
+    path: '/services/social-media-marketing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesSeoRoute = ServicesSeoRouteImport.update({
+  id: '/services/seo',
+  path: '/services/seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPerformanceMarketingRoute =
+  ServicesPerformanceMarketingRouteImport.update({
+    id: '/services/performance-marketing',
+    path: '/services/performance-marketing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesContentMarketingRoute =
+  ServicesContentMarketingRouteImport.update({
+    id: '/services/content-marketing',
+    path: '/services/content-marketing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/services/content-marketing': typeof ServicesContentMarketingRoute
+  '/services/performance-marketing': typeof ServicesPerformanceMarketingRoute
+  '/services/seo': typeof ServicesSeoRoute
+  '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
+  '/services/video-creation': typeof ServicesVideoCreationRoute
+  '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/services/content-marketing': typeof ServicesContentMarketingRoute
+  '/services/performance-marketing': typeof ServicesPerformanceMarketingRoute
+  '/services/seo': typeof ServicesSeoRoute
+  '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
+  '/services/video-creation': typeof ServicesVideoCreationRoute
+  '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/services/content-marketing': typeof ServicesContentMarketingRoute
+  '/services/performance-marketing': typeof ServicesPerformanceMarketingRoute
+  '/services/seo': typeof ServicesSeoRoute
+  '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
+  '/services/video-creation': typeof ServicesVideoCreationRoute
+  '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/services/content-marketing'
+    | '/services/performance-marketing'
+    | '/services/seo'
+    | '/services/social-media-marketing'
+    | '/services/video-creation'
+    | '/services/website-development'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/services/content-marketing'
+    | '/services/performance-marketing'
+    | '/services/seo'
+    | '/services/social-media-marketing'
+    | '/services/video-creation'
+    | '/services/website-development'
+  id:
+    | '__root__'
+    | '/'
+    | '/services/content-marketing'
+    | '/services/performance-marketing'
+    | '/services/seo'
+    | '/services/social-media-marketing'
+    | '/services/video-creation'
+    | '/services/website-development'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ServicesContentMarketingRoute: typeof ServicesContentMarketingRoute
+  ServicesPerformanceMarketingRoute: typeof ServicesPerformanceMarketingRoute
+  ServicesSeoRoute: typeof ServicesSeoRoute
+  ServicesSocialMediaMarketingRoute: typeof ServicesSocialMediaMarketingRoute
+  ServicesVideoCreationRoute: typeof ServicesVideoCreationRoute
+  ServicesWebsiteDevelopmentRoute: typeof ServicesWebsiteDevelopmentRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +134,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/website-development': {
+      id: '/services/website-development'
+      path: '/services/website-development'
+      fullPath: '/services/website-development'
+      preLoaderRoute: typeof ServicesWebsiteDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/video-creation': {
+      id: '/services/video-creation'
+      path: '/services/video-creation'
+      fullPath: '/services/video-creation'
+      preLoaderRoute: typeof ServicesVideoCreationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/social-media-marketing': {
+      id: '/services/social-media-marketing'
+      path: '/services/social-media-marketing'
+      fullPath: '/services/social-media-marketing'
+      preLoaderRoute: typeof ServicesSocialMediaMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/seo': {
+      id: '/services/seo'
+      path: '/services/seo'
+      fullPath: '/services/seo'
+      preLoaderRoute: typeof ServicesSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/performance-marketing': {
+      id: '/services/performance-marketing'
+      path: '/services/performance-marketing'
+      fullPath: '/services/performance-marketing'
+      preLoaderRoute: typeof ServicesPerformanceMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/content-marketing': {
+      id: '/services/content-marketing'
+      path: '/services/content-marketing'
+      fullPath: '/services/content-marketing'
+      preLoaderRoute: typeof ServicesContentMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ServicesContentMarketingRoute: ServicesContentMarketingRoute,
+  ServicesPerformanceMarketingRoute: ServicesPerformanceMarketingRoute,
+  ServicesSeoRoute: ServicesSeoRoute,
+  ServicesSocialMediaMarketingRoute: ServicesSocialMediaMarketingRoute,
+  ServicesVideoCreationRoute: ServicesVideoCreationRoute,
+  ServicesWebsiteDevelopmentRoute: ServicesWebsiteDevelopmentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
