@@ -23,9 +23,9 @@ export function Header() {
         scrolled ? "glass shadow-soft" : "bg-background/60 backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 lg:gap-8 lg:px-8 lg:py-6">
         <Logo />
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-8 lg:flex xl:gap-10">
           <Link to="/" className="text-sm font-medium text-foreground/80 hover:text-brand" activeProps={{ className: "text-brand" }}>Home</Link>
           <div
             className="relative"
@@ -62,7 +62,7 @@ export function Header() {
           <Link to="/about" className="text-sm font-medium text-foreground/80 hover:text-brand">About</Link>
           <Link to="/contact" className="text-sm font-medium text-foreground/80 hover:text-brand">Contact</Link>
         </nav>
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex xl:gap-4">
           <a href={`tel:${CONTACT.phone}`} className="inline-flex items-center gap-2 rounded-full border px-3 py-2 text-sm font-medium text-foreground hover:border-brand hover:text-brand">
             <Phone className="h-4 w-4" /> Call Now
           </a>
