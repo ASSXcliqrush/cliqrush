@@ -23,7 +23,7 @@ export function Header() {
         scrolled ? "glass shadow-soft" : "bg-background/60 backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 lg:gap-6 lg:px-8 lg:py-3">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1 lg:gap-6 lg:px-8 lg:py-1">
         <Logo />
         <nav className="hidden items-center gap-7 lg:flex">
           <Link to="/" className="text-sm font-medium text-foreground/80 hover:text-brand" activeProps={{ className: "text-brand" }}>Home</Link>
