@@ -13,10 +13,10 @@ import { SERVICES, TRUST_METRICS, PROCESS, TESTIMONIALS, CASE_STUDIES, CONTACT }
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CliqRush — Turn Clicks Into Customers" },
-      { name: "description", content: "Performance-driven digital marketing agency. SEO, paid ads, content, web & social — engineered to generate leads, sales and revenue." },
-      { property: "og:title", content: "CliqRush — Performance-Driven Digital Marketing" },
-      { property: "og:description", content: "We help businesses generate qualified leads and scale revenue through data-driven marketing." },
+      { title: "CliqRush — Digital Marketing Agency That Drives Revenue" },
+      { name: "description", content: "CliqRush is a performance marketing agency delivering SEO, paid ads, content, websites and social media that turn clicks into qualified leads." },
+      { property: "og:title", content: "CliqRush — Digital Marketing Agency That Drives Revenue" },
+      { property: "og:description", content: "CliqRush is a performance marketing agency delivering SEO, paid ads, content, websites and social media that turn clicks into qualified leads." },
     ],
   }),
   component: HomePage,
