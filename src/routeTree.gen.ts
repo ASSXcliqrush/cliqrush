@@ -26,6 +26,7 @@ import { Route as ServicesContentMarketingRouteImport } from './routes/services.
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminNewRouteImport } from './routes/_authenticated/admin.new'
+import { Route as AuthenticatedAdminIdRouteImport } from './routes/_authenticated/admin.$id'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -115,6 +116,11 @@ const AuthenticatedAdminNewRoute = AuthenticatedAdminNewRouteImport.update({
   path: '/admin/new',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedAdminIdRoute = AuthenticatedAdminIdRouteImport.update({
+  id: '/admin/$id',
+  path: '/admin/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/services/video-creation': typeof ServicesVideoCreationRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/admin/$id': typeof AuthenticatedAdminIdRoute
   '/admin/new': typeof AuthenticatedAdminNewRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
@@ -149,6 +156,7 @@ export interface FileRoutesByTo {
   '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/services/video-creation': typeof ServicesVideoCreationRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/admin/$id': typeof AuthenticatedAdminIdRoute
   '/admin/new': typeof AuthenticatedAdminNewRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
@@ -169,6 +177,7 @@ export interface FileRoutesById {
   '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/services/video-creation': typeof ServicesVideoCreationRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/_authenticated/admin/$id': typeof AuthenticatedAdminIdRoute
   '/_authenticated/admin/new': typeof AuthenticatedAdminNewRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
@@ -189,6 +198,7 @@ export interface FileRouteTypes {
     | '/services/social-media-marketing'
     | '/services/video-creation'
     | '/services/website-development'
+    | '/admin/$id'
     | '/admin/new'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
     | '/services/social-media-marketing'
     | '/services/video-creation'
     | '/services/website-development'
+    | '/admin/$id'
     | '/admin/new'
     | '/admin'
   id:
@@ -226,6 +237,7 @@ export interface FileRouteTypes {
     | '/services/social-media-marketing'
     | '/services/video-creation'
     | '/services/website-development'
+    | '/_authenticated/admin/$id'
     | '/_authenticated/admin/new'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
@@ -368,15 +380,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminNewRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/admin/$id': {
+      id: '/_authenticated/admin/$id'
+      path: '/admin/$id'
+      fullPath: '/admin/$id'
+      preLoaderRoute: typeof AuthenticatedAdminIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminIdRoute: typeof AuthenticatedAdminIdRoute
   AuthenticatedAdminNewRoute: typeof AuthenticatedAdminNewRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminIdRoute: AuthenticatedAdminIdRoute,
   AuthenticatedAdminNewRoute: AuthenticatedAdminNewRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
