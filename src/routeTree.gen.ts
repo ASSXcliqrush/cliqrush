@@ -21,6 +21,7 @@ import { Route as ServicesSocialMediaMarketingRouteImport } from './routes/servi
 import { Route as ServicesSeoRouteImport } from './routes/services.seo'
 import { Route as ServicesPerformanceMarketingRouteImport } from './routes/services.performance-marketing'
 import { Route as ServicesContentMarketingRouteImport } from './routes/services.content-marketing'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -86,14 +87,20 @@ const ServicesContentMarketingRoute =
     path: '/services/content-marketing',
     getParentRoute: () => rootRouteImport,
   } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/services/content-marketing': typeof ServicesContentMarketingRoute
   '/services/performance-marketing': typeof ServicesPerformanceMarketingRoute
   '/services/seo': typeof ServicesSeoRoute
@@ -104,10 +111,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/services/content-marketing': typeof ServicesContentMarketingRoute
   '/services/performance-marketing': typeof ServicesPerformanceMarketingRoute
   '/services/seo': typeof ServicesSeoRoute
@@ -119,10 +127,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/services/content-marketing': typeof ServicesContentMarketingRoute
   '/services/performance-marketing': typeof ServicesPerformanceMarketingRoute
   '/services/seo': typeof ServicesSeoRoute
@@ -139,6 +148,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/sitemap.xml'
+    | '/blog/$slug'
     | '/services/content-marketing'
     | '/services/performance-marketing'
     | '/services/seo'
@@ -153,6 +163,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/sitemap.xml'
+    | '/blog/$slug'
     | '/services/content-marketing'
     | '/services/performance-marketing'
     | '/services/seo'
@@ -167,6 +178,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/sitemap.xml'
+    | '/blog/$slug'
     | '/services/content-marketing'
     | '/services/performance-marketing'
     | '/services/seo'
@@ -178,7 +190,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  BlogRoute: typeof BlogRoute
+  BlogRoute: typeof BlogRouteWithChildren
   CaseStudiesRoute: typeof CaseStudiesRoute
   ContactRoute: typeof ContactRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -276,13 +288,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesContentMarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
   }
 }
+
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  BlogRoute: BlogRoute,
+  BlogRoute: BlogRouteWithChildren,
   CaseStudiesRoute: CaseStudiesRoute,
   ContactRoute: ContactRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
