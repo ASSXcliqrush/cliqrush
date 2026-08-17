@@ -33,7 +33,7 @@ function ContactPage() {
             <ContactCard icon={Phone} title="Call us" sub={CONTACT.phoneDisplay} href={`tel:${CONTACT.phone}`} />
             <ContactCard icon={MessageCircle} title="WhatsApp" sub="Chat with our team instantly" href={waUrl} />
             <ContactCard icon={Mail} title="Email" sub={CONTACT.email} href={`mailto:${CONTACT.email}`} />
-            <ContactCard icon={MapPin} title="Office" sub={CONTACT.address} />
+            <ContactCard icon={MapPin} title="Office" sub={CONTACT.address} href={CONTACT.gmb} />
             <ContactCard icon={Clock} title="Hours" sub={CONTACT.hours} />
             <div className="overflow-hidden rounded-3xl border bg-card shadow-card">
               <iframe
@@ -42,6 +42,14 @@ function ContactPage() {
                 className="h-72 w-full"
                 loading="lazy"
               />
+              <a
+                href={CONTACT.gmb}
+                target="_blank"
+                rel="noreferrer"
+                className="block border-t px-5 py-4 text-sm font-semibold text-brand hover:underline"
+              >
+                View us on Google Maps →
+              </a>
             </div>
           </div>
           <LeadForm
