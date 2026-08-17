@@ -37,8 +37,8 @@ function ContactPage() {
             <ContactCard icon={Clock} title="Hours" sub={CONTACT.hours} />
             <div className="overflow-hidden rounded-3xl border bg-card shadow-card">
               <iframe
-                title="CliqRush office location"
-                src="https://www.google.com/maps?q=Bengaluru&output=embed"
+                title="Cliqrush Digital Marketing office location"
+                src="https://www.google.com/maps?q=Ahmedabad%2C%20Gujarat%2C%20India&output=embed"
                 className="h-72 w-full"
                 loading="lazy"
               />

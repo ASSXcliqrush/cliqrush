@@ -7,7 +7,7 @@ export const CONTACT = {
   phoneDisplay: "+91 97127 02525",
   whatsapp: "919712702525",
   email: "hello@cliqrush.com",
-  address: "CliqRush Digital, Bengaluru, India",
+  address: "Cliqrush Digital Marketing - Ahmedabad, Gujarat, India.",
   hours: "Mon–Sat · 10:00 AM – 7:00 PM IST",
   gmb: "https://maps.app.goo.gl/6qm6n9L9MQyUhNkH6",
 };
