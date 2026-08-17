@@ -3,12 +3,13 @@ import {
 } from "lucide-react";
 
 export const CONTACT = {
-  phone: "+919999999999",
-  phoneDisplay: "+91 99999 99999",
-  whatsapp: "919999999999",
+  phone: "+919712702525",
+  phoneDisplay: "+91 97127 02525",
+  whatsapp: "919712702525",
   email: "hello@cliqrush.com",
   address: "CliqRush Digital, Bengaluru, India",
   hours: "Mon–Sat · 10:00 AM – 7:00 PM IST",
+  gmb: "https://maps.app.goo.gl/6qm6n9L9MQyUhNkH6",
 };
 
 export const SERVICES = [
