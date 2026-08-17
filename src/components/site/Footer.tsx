@@ -22,7 +22,7 @@ export function Footer() {
             <div className="mt-6 space-y-2 text-sm text-white/80">
               <a href={`tel:${CONTACT.phone}`} className="flex items-center gap-2 hover:text-white"><Phone className="h-4 w-4 text-brand-cyan" /> {CONTACT.phoneDisplay}</a>
               <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-white"><Mail className="h-4 w-4 text-brand-cyan" /> {CONTACT.email}</a>
-              <div className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-brand-cyan" /> {CONTACT.address}</div>
+              <a href={CONTACT.gmb} target="_blank" rel="noreferrer" className="flex items-start gap-2 hover:text-white"><MapPin className="mt-0.5 h-4 w-4 text-brand-cyan" /> {CONTACT.address}</a>
             </div>
           </div>
 
