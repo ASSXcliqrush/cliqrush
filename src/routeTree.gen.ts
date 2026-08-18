@@ -17,6 +17,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ServicesWebsiteDevelopmentRouteImport } from './routes/services.website-development'
 import { Route as ServicesVideoCreationRouteImport } from './routes/services.video-creation'
 import { Route as ServicesSocialMediaMarketingRouteImport } from './routes/services.social-media-marketing'
@@ -66,6 +67,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
 } as any)
 const ServicesWebsiteDevelopmentRoute =
   ServicesWebsiteDevelopmentRouteImport.update({
@@ -137,6 +143,7 @@ export interface FileRoutesByFullPath {
   '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/services/video-creation': typeof ServicesVideoCreationRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/blog/': typeof BlogIndexRoute
   '/admin/$id': typeof AuthenticatedAdminIdRoute
   '/admin/new': typeof AuthenticatedAdminNewRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
@@ -145,7 +152,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
-  '/blog': typeof BlogRouteWithChildren
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -156,6 +162,7 @@ export interface FileRoutesByTo {
   '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/services/video-creation': typeof ServicesVideoCreationRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/blog': typeof BlogIndexRoute
   '/admin/$id': typeof AuthenticatedAdminIdRoute
   '/admin/new': typeof AuthenticatedAdminNewRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
@@ -177,6 +184,7 @@ export interface FileRoutesById {
   '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/services/video-creation': typeof ServicesVideoCreationRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/blog/': typeof BlogIndexRoute
   '/_authenticated/admin/$id': typeof AuthenticatedAdminIdRoute
   '/_authenticated/admin/new': typeof AuthenticatedAdminNewRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
@@ -198,6 +206,7 @@ export interface FileRouteTypes {
     | '/services/social-media-marketing'
     | '/services/video-creation'
     | '/services/website-development'
+    | '/blog/'
     | '/admin/$id'
     | '/admin/new'
     | '/admin/'
@@ -206,7 +215,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
-    | '/blog'
     | '/case-studies'
     | '/contact'
     | '/sitemap.xml'
@@ -217,6 +225,7 @@ export interface FileRouteTypes {
     | '/services/social-media-marketing'
     | '/services/video-creation'
     | '/services/website-development'
+    | '/blog'
     | '/admin/$id'
     | '/admin/new'
     | '/admin'
@@ -237,6 +246,7 @@ export interface FileRouteTypes {
     | '/services/social-media-marketing'
     | '/services/video-creation'
     | '/services/website-development'
+    | '/blog/'
     | '/_authenticated/admin/$id'
     | '/_authenticated/admin/new'
     | '/_authenticated/admin/'
@@ -316,6 +326,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
     }
     '/services/website-development': {
       id: '/services/website-development'
@@ -407,10 +424,12 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface BlogRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 const BlogRouteChildren: BlogRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
